@@ -56,16 +56,17 @@ public:
   void Predict();
 
   /**
-   * Updates the state and
+   * Updates the state by using standard Kalman Filter equations
    * @param z The measurement at k+1
    */
   void Update(const VectorXd &z);
 
   /**
+   * Updates the state by using Extended Kalman Filter equations
    * @param z The measurement at k+1
-   * @param z_pred The predicted measurements at k+1
    */
-  void UpdateWithAlreadyPredictedMeasurements(const VectorXd &z, const VectorXd &z_pred);
+  void UpdateEKF(const VectorXd &z);
+
 
 };
 

@@ -24,13 +24,13 @@ void KalmanFilter::Predict() {
 void KalmanFilter::Update(const VectorXd &z) {
   /**
   TODO:
-    * update the state
+    * update the state by using Kalman Filter equations
   */
 }
 
-void KalmanFilter::UpdateWithAlreadyPredictedMeasurements(const VectorXd& z, const VectorXd& z_pred) {
+void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
   TODO:
-    * update after predicting
+    * update the state by using Extended Kalman Filter equations
   */
 }
