@@ -28,18 +28,20 @@ FusionEKF::FusionEKF() {
   /**
     * Finish initializing the FusionEKF.
   */
+  //sigma2=0.0225 from lectures
+  R_laser_<< 0.0225, 0,
+		     0, 0.0225;
 
-  R_laser_<< 0.00001, 0,
-		     0, 0.00001;
-
+  //Measurement Function Matrix
   H_laser_<< 1, 0, 0, 0,
   			 0, 1, 0, 0;
 
-  R_radar_<< 0.00001, 0, 0,
- 		     0, 0.00001, 0,
-			 0, 0, 0.00001;
+  //sigma2=0.0225 from lectures
+  R_radar_<< 0.0225, 0, 0,
+ 		     0, 0.0225, 0,
+			 0, 0, 0.0225;
 
-
+  //State Transition Matrix
   ekf_.F_ = MatrixXd(4, 4);
   ekf_.F_ << 1, 0, 1, 0,
   			 0, 1, 0, 1,
@@ -68,8 +70,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     */
     ekf_.x_ = VectorXd(4);
     previous_timestamp_ = measurement_pack.timestamp_;
-
-
 
     //Initialize the state ekf_.x_ with the first measurement.
 
@@ -148,7 +148,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	  Hj_ << tools.CalculateJacobian(ekf_.x_);
 	  ekf_.H_ = Hj_;
 	  ekf_.R_ = R_radar_;
-	  ekf_.Update(measurement_pack.raw_measurements_);
+	  ekf_.UpdateEKF(measurement_pack.raw_measurements_);
 
   }
 
