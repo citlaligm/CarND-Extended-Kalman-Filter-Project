@@ -51,10 +51,9 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
-    *TODO:
     * update the state by using Extended Kalman Filter equations
   */
-	cout<<"H_UpdateEKF: "<<H_<<endl;
+	Update(z);
 
 }
 
