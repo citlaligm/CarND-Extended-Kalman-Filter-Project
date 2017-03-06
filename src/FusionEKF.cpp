@@ -40,6 +40,11 @@ FusionEKF::FusionEKF() {
   R_radar_<< 0.0225, 0, 0,
  		     0, 0.0225, 0,
 			 0, 0, 0.0225;
+  //Measurement Function Matrix
+  //TODO: Check if this is a good default.
+  Hj_<< 1, 1, 0, 0,
+        1, 1, 0, 0,
+        1, 1, 1, 1;
 
   //State Transition Matrix
   ekf_.F_ = MatrixXd(4, 4);
@@ -47,6 +52,9 @@ FusionEKF::FusionEKF() {
   			 0, 1, 0, 1,
   			 0, 0, 1, 0,
   			 0, 0, 0, 1;
+
+
+
 
 
 }
@@ -131,6 +139,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      			   0, dt_4/4*noise_ay, 0, dt_3/2*noise_ay,
      			   dt_3/2*noise_ax, 0, dt_2*noise_ax, 0,
      			   0, dt_3/2*noise_ay, 0, dt_2*noise_ay;
+
 
   ekf_.Predict();
 

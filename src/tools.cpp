@@ -63,9 +63,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     {
         if(c1<0.0001)
         {
-        	Hj << 0, 0, 0, 0,
-        	      0, 0, 0, 0,
-        		  0, 0, 0, 0;
+
         	throw 20;
         }
         else 
