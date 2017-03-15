@@ -89,7 +89,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       cout<<"Px: "<<px<<"Py: "<<py<<endl;
 
       if(px==0 or py ==0){
-        cout<<"Error!! "<<py<<endl;
         return;
       }
 
