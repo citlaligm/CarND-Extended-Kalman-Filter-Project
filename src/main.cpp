@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <stdlib.h>
+#include <iomanip>
 #include "Eigen/Dense"
 #include "FusionEKF.h"
 #include "ground_truth_package.h"
@@ -170,7 +171,7 @@ int main(int argc, char* argv[]) {
 
    // compute the accuracy (RMSE)
    Tools tools;
-   cout << "\nAccuracy - RMSE:" << endl << tools.CalculateRMSE(estimations, ground_truth) << endl;
+   cout << "\nAccuracy - RMSE:" << endl << fixed << setprecision(2) << tools.CalculateRMSE(estimations, ground_truth) << endl;
 
   // close files
   if (out_file_.is_open()) {
