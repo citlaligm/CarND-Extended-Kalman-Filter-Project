@@ -32,9 +32,12 @@ Self-Driving Car Engineer Nanodegree Program
     - eg. `./ExtendedKF ../data/sample-laser-radar-measurement-data-1.txt output.txt`
 
 ## Results
----
+
+*** Path 1 ***
 ![alt text][image1]
 
---
+
+*** Path 2 ***
+
 ![alt text][image2]
 
