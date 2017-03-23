@@ -92,7 +92,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
       float px = measurement_pack.raw_measurements_[0]*cos(theta);
       float py = measurement_pack.raw_measurements_[0]*sin(theta);
-      //cout<<"Px: "<<px<<"Py: "<<py<<endl;
 
       if(px==0 or py ==0){
         return;
@@ -147,14 +146,11 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     float dt_3 = dt_2 * dt;
     float dt_4 = dt_3 * dt;
 
-
-
     ekf_.Q_ = MatrixXd(4, 4);
     ekf_.Q_ <<  dt_4/4*noise_ax, 0, dt_3/2*noise_ax, 0,
                  0, dt_4/4*noise_ay, 0, dt_3/2*noise_ay,
                  dt_3/2*noise_ax, 0, dt_2*noise_ax, 0,
                  0, dt_3/2*noise_ay, 0, dt_2*noise_ay;
-
 
     ekf_.Predict();
 
@@ -183,6 +179,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 	  //Convert from cartesian to polar notation prior calling the updating function
 	  float px = ekf_.x_[0];
+
 	  float py = ekf_.x_[1];
 	  float vx = ekf_.x_[2];
 	  float vy = ekf_.x_[3];
@@ -190,6 +187,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     //h(x')
 	  float range = sqrt(px*px + py*py);
 	  float bearing = atan2(py,px);
+
 	  float radial_velocity = (px*vx + py*vy)/range;
 	  z_predicted << range, bearing, radial_velocity;
 
