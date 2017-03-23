@@ -6,6 +6,8 @@ Self-Driving Car Engineer Nanodegree Program
 [//]: # (Image References)
 [image1]: ./images/input1.png
 [image2]: ./images/input2.png
+[image3]: ./images/results1.png
+[image4]: ./images/results2.png
 
 
 ## Dependencies
@@ -36,8 +38,11 @@ Self-Driving Car Engineer Nanodegree Program
 [***Path 1***](./data/sample-laser-radar-measurement-data-1.txt)
 ![alt text][image1]
 
+![alt text][image3]
 
 [***Path 2***](./data/sample-laser-radar-measurement-data-2.txt)
 
 ![alt text][image2]
+
+![alt text][image4]
 
