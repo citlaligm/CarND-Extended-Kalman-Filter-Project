@@ -139,6 +139,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 
   if(dt > 0.001){
+    //The State Transition Matrix (F) depends on dt to calculate new position(px,py) considering the velocities (vx,vy). 
     ekf_.F_(0, 2) = dt;
     ekf_.F_(1, 3) = dt;
 
@@ -146,6 +147,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     float dt_3 = dt_2 * dt;
     float dt_4 = dt_3 * dt;
 
+    //State Convariance Matrix, the longer you wait the more uncertain the state becomes.
+	  
     ekf_.Q_ = MatrixXd(4, 4);
     ekf_.Q_ <<  dt_4/4*noise_ax, 0, dt_3/2*noise_ax, 0,
                  0, dt_4/4*noise_ay, 0, dt_3/2*noise_ay,
